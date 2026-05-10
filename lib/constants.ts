@@ -223,3 +223,206 @@ export const POSTS = [
     readTime: "9 min"
   }
 ];
+
+export const STORE_DATA = [
+  {
+    id: 1,
+    name: "Northern Roots Coffee",
+    location: "Toronto, ON",
+    province: "Ontario",
+    type: ["Canadian Owned", "Locally Owned"],
+    category: "Food & Drink",
+    desc: "Ethically sourced beans roasted in small batches in Kensington Market. Supporting fair-trade farmers since 2012.",
+    verified: true
+  },
+  {
+    id: 2,
+    name: "Maple Leaf Furniture",
+    location: "Vancouver, BC",
+    province: "British Columbia",
+    type: ["Canadian Based", "Independent Owner"],
+    category: "Retail",
+    desc: "Handcrafted sustainable wood furniture using timber sourced exclusively from British Columbia forests.",
+    verified: true
+  },
+  {
+    id: 3,
+    name: "Rideau Canal Skates",
+    location: "Ottawa, ON",
+    province: "Alberta",
+    type: ["Gold Member", "Community Contributor"],
+    category: "Sports",
+    desc: "Premium winter equipment for the Rideau Canal. 5% of all profits go to local youth hockey programs.",
+    verified: true
+  },
+  {
+    id: 4,
+    name: "Halifax Harbour General",
+    location: "Halifax, NS",
+    province: "Nova Scotia",
+    type: ["Locally Owned"],
+    category: "Retail",
+    desc: "Showcasing over 50 local artisans from across the Maritimes. Your destination for authentic Atlantic goods.",
+    verified: true
+  },
+  {
+    id: 5,
+    name: "Prairie Grain Bakery",
+    location: "Saskatoon, SK",
+    province: "Quebec",
+    type: ["Canadian Owned"],
+    category: "Food & Drink",
+    desc: "Traditional sourdough and heritage grains grown on the Saskatchewan prairies. 100% additive-free.",
+    verified: true
+  },
+  {
+    id: 6,
+    name: "Rocky Mountain Gear",
+    location: "Calgary, AB",
+    province: "Saskatchewan",
+    type: ["Gold Member"],
+    category: "Retail",
+    desc: "High-performance technical outerwear designed and torture-tested in the heart of the Canadian Rockies.",
+    verified: true
+  },
+  {
+    id: 7,
+    name: "Montreal Tech Solutions",
+    location: "Montreal, QC",
+    province: "Ontario",
+    type: ["Canadian Based", "Tech Partner"],
+    category: "Tech",
+    desc: "Custom software development focusing on AI-driven supply chain efficiency for Canadian manufacturers.",
+    verified: true
+  },
+  {
+    id: 8,
+    name: "Pacific Kelp Skincare",
+    location: "Victoria, BC",
+    province: "British Columbia",
+    type: ["Locally Owned", "Sustainability Leader"],
+    category: "Services",
+    desc: "Organic skincare products formulated with hand-harvested kelp from the Vancouver Island coastline.",
+    verified: true
+  },
+  {
+    id: 9,
+    name: "Laurentian Woolens",
+    location: "Sherbrooke, QC",
+    province: "Alberta",
+    type: ["Canadian Owned", "Independent Owner"],
+    category: "Manufacturing",
+    desc: "Traditional spinning mill producing high-quality wool blankets and apparel using age-old Quebec techniques.",
+    verified: true
+  },
+  {
+    id: 10,
+    name: "Great Lakes Kayaks",
+    location: "Thunder Bay, ON",
+    province: "Nova Scotia",
+    type: ["Community Contributor"],
+    category: "Sports",
+    desc: "Durable, expedition-grade kayaks built specifically for the unpredictable waters of Lake Superior.",
+    verified: true
+  },
+  {
+    id: 11,
+    name: "Boreal Forest Gin",
+    location: "Edmonton, AB",
+    province: "Quebec",
+    type: ["Locally Owned"],
+    category: "Food & Drink",
+    desc: "Small-batch distillery using hand-picked botanicals from the northern Boreal forest for a unique profile.",
+    verified: true
+  },
+  {
+    id: 12,
+    name: "Atlantic Fisheries Co.",
+    location: "St. John's, NL",
+    province: "Saskatchewan",
+    type: ["Canadian Owned", "Gold Member"],
+    category: "Food & Drink",
+    desc: "Direct-to-consumer sustainable seafood caught by local independent fishers in the North Atlantic.",
+    verified: true
+  },
+  {
+    id: 13,
+    name: "Yukon Aurora Tours",
+    location: "Whitehorse, YT",
+    province: "Ontario",
+    type: ["Locally Owned"],
+    category: "Services",
+    desc: "Indigenous-led eco-tours focused on celestial education and northern wilderness preservation.",
+    verified: true
+  },
+  {
+    id: 14,
+    name: "Canuck Canvas Works",
+    location: "Winnipeg, MB",
+    province: "British Columbia",
+    type: ["Manufacturing"],
+    category: "Retail",
+    desc: "Heavy-duty canvas gear for the toughest environments. From parkas to industrial covers, built for cold.",
+    verified: true
+  },
+  {
+    id: 15,
+    name: "Niagara Viticulture Tech",
+    location: "Niagara, ON",
+    province: "Alberta",
+    type: ["Tech Partner", "Canadian Owned"],
+    category: "Tech",
+    desc: "Advanced sensors and data analytics for vineyard management in Canada’s premier wine region.",
+    verified: true
+  },
+  {
+    id: 16,
+    name: "Okanagan Fruit Press",
+    location: "Kelowna, BC",
+    province: "Nova Scotia",
+    type: ["Independent Owner"],
+    category: "Food & Drink",
+    desc: "Cold-pressed juices and organic preserves made with seasonal fruit from the Okanagan Valley.",
+    verified: true
+  },
+  {
+    id: 17,
+    name: "Badlands Pottery",
+    location: "Drumheller, AB",
+    province: "Quebec",
+    type: ["Locally Owned", "Independent Owner"],
+    category: "Retail",
+    desc: "Unique ceramic pieces inspired by the textures and colors of the Alberta Badlands landscape.",
+    verified: true
+  },
+  {
+    id: 18,
+    name: "Maritime BioSystems",
+    location: "Moncton, NB",
+    province: "Saskatchewan",
+    type: ["Tech Partner"],
+    category: "Tech",
+    desc: "Biotechnology firm developing ocean-based fertilizers for large-scale sustainable agriculture.",
+    verified: true
+  },
+  {
+    id: 19,
+    name: "Cape Breton Fiddles",
+    location: "Sydney, NS",
+    province: "Ontario",
+    type: ["Locally Owned", "Independent Owner"],
+    category: "Manufacturing",
+    desc: "Master-crafted violins and repairs for the vibrant traditional music scene of Atlantic Canada.",
+    verified: true
+  },
+  {
+    id: 20,
+    name: "Island Hop Brewing",
+    location: "Charlottetown, PE",
+    province: "British Columbia",
+    type: ["Canadian Owned"],
+    category: "Food & Drink",
+    desc: "Craft beer inspired by the red soil and maritime climate of Prince Edward Island.",
+    verified: true
+  }
+];
