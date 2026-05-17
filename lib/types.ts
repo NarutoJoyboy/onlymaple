@@ -9,6 +9,7 @@ export interface UserProfile {
 }
 
 export interface ShopperProfile extends UserProfile {
+  additionalData: any;
   role: 'shopper';
   savedBusinesses: string[]; // Array of businessIds
   homeLocation?: string;

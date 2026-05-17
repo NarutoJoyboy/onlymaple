@@ -5,7 +5,7 @@ import { Heart, MapPin, Search, TrendingUp, ArrowRight } from 'lucide-react';
 import { RevealOnScroll } from '../animations/RevealOnScroll';
 
 import { useAuth } from '../auth/AuthProvider';
-import { getBusinessesByIds, DirectoryBusiness } from '@/lib/db/businesses';
+import { DirectoryBusiness } from '@/lib/db/businesses';
 import { getUserProfile } from '@/lib/db/users'; // We need this to get savedBusinesses array
 import { ShopperProfile } from '@/lib/types';
 
@@ -28,10 +28,10 @@ export const ShopperDashboard = () => {
           // 2. Mock some saved IDs if empty for demo? 
           // setSavedBusinesses([]); 
 
-          if (savedIds.length > 0) {
-            const businesses = await getBusinessesByIds(savedIds);
-            setSavedBusinesses(businesses);
-          }
+          // if (savedIds.length > 0) {
+          //   const businesses = await getBusinessesByIds(savedIds);
+          //   setSavedBusinesses(businesses);
+          // }
         }
         setLoading(false);
       }
