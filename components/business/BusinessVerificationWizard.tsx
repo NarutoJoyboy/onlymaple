@@ -2,9 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { 
-  Building2, FileText, Upload, ShieldCheck, CreditCard, ChevronRight, CheckCircle, Clock, ArrowLeft
+  Building2, FileText, Upload, ShieldCheck, CreditCard, ChevronRight, CheckCircle, ArrowLeft
 } from 'lucide-react';
-import {RevealOnScroll} from '../animations/RevealOnScroll';
 import { useAuth } from '../auth/AuthProvider';
 import { BusinessApplicationData, createBusinessApplication } from '@/lib/db/applications';
 
@@ -17,7 +16,6 @@ export const BusinessVerificationWizard = ({ onComplete, onCancel }: WizardProps
   const { user } = useAuth(); // authentication
   const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [direction, setDirection] = useState<'forward' | 'back'>('forward');
 
   // Form State
   const [formData, setFormData] = useState<Omit<BusinessApplicationData, 'userId' | 'status' | 'submittedAt'>>({
@@ -82,7 +80,6 @@ export const BusinessVerificationWizard = ({ onComplete, onCancel }: WizardProps
 
   const handleNext = async () => {
     if (step < 4) {
-      setDirection('forward');
       setStep(prev => prev + 1);
     } else {
       if (!user) return;
@@ -101,7 +98,6 @@ export const BusinessVerificationWizard = ({ onComplete, onCancel }: WizardProps
 
   const handleBack = () => {
       if (step > 1) {
-          setDirection('back');
           setStep(prev => prev - 1);
       } else {
           onCancel();
@@ -236,13 +232,16 @@ export const BusinessVerificationWizard = ({ onComplete, onCancel }: WizardProps
               {[
                   { key: 'incorporation', title: "Incorporation Articles", desc: "PDF or JPG", icon: Upload },
                   { key: 'governmentId', title: "Government ID", desc: "Driver's License or Passport", icon: UserIcon }
-              ].map((item, idx) => (
+              ].map((item, idx) => {
+                const Icon = item.icon;
+                const isUploaded = formData.documents[item.key as 'incorporation' | 'governmentId'];
+
+                return (
                 <div key={idx} className="relative overflow-hidden border-2 border-dashed border-gray-200 rounded-[2rem] p-8 hover:bg-slate-50 hover:border-red-400 transition-all duration-300 cursor-pointer group flex flex-col md:flex-row items-center text-center md:text-left gap-6">
                     <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-red-50 to-transparent rounded-bl-full -mr-16 -mt-16 transition-opacity opacity-0 group-hover:opacity-100"></div>
                     
                     <div className="h-16 w-16 bg-white border border-gray-100 rounded-2xl flex items-center justify-center shadow-sm group-hover:scale-110 group-hover:shadow-md transition-all duration-300 z-10">
-                       {/* @ts-ignore */}
-                       {formData.documents[item.key as 'incorporation'|'governmentId'] ? <CheckCircle className="w-7 h-7 text-green-500" /> : <item.icon className="w-7 h-7 text-gray-400 group-hover:text-red-500 transition-colors" />}
+                       {isUploaded ? <CheckCircle className="w-7 h-7 text-green-500" /> : <Icon className="w-7 h-7 text-gray-400 group-hover:text-red-500 transition-colors" />}
                     </div>
                     <div className="flex-grow z-10">
                         <h4 className="text-lg font-bold text-gray-900 group-hover:text-red-700 transition-colors">{item.title}</h4>
@@ -257,12 +256,13 @@ export const BusinessVerificationWizard = ({ onComplete, onCancel }: WizardProps
                             if (e.target.files?.[0]) handleFileSelect(item.key as 'incorporation' | 'governmentId', e.target.files[0]);
                           }}
                         />
-                         <span className={`px-5 py-2.5 text-sm font-bold border rounded-xl transition-all shadow-sm ${formData.documents[item.key as 'incorporation'|'governmentId'] ? 'bg-green-100 text-green-700 border-green-200' : 'bg-white text-gray-700 border-gray-200 group-hover:bg-red-600 group-hover:text-white group-hover:border-red-600'}`}>
-                           {formData.documents[item.key as 'incorporation'|'governmentId'] ? 'Uploaded' : 'Select File'}
+                         <span className={`px-5 py-2.5 text-sm font-bold border rounded-xl transition-all shadow-sm ${isUploaded ? 'bg-green-100 text-green-700 border-green-200' : 'bg-white text-gray-700 border-gray-200 group-hover:bg-red-600 group-hover:text-white group-hover:border-red-600'}`}>
+                           {isUploaded ? 'Uploaded' : 'Select File'}
                          </span>
                     </div>
                 </div>
-              ))}
+                );
+              })}
             </div>
             
             <div className="mt-8 flex items-center gap-3 text-xs text-gray-400 bg-gray-50 p-3 rounded-lg border border-gray-100 max-w-fit mx-auto md:mx-0">
