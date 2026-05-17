@@ -49,7 +49,8 @@ export const BusinessCard = ({ biz, index }: { biz: any; index: number }) => {
 
       <div className="mt-auto pt-8 border-t border-gray-50 flex items-center justify-between relative z-10">
         <div className="flex flex-wrap gap-2">
-          <Badge type={biz.category} variant="outline" />
+          {/* ✅ Fixed: Removed variant="outline" to match the Badge component's props */}
+          <Badge type={biz.category} />
           {biz.type.slice(0, 1).map((t: any) => (
             <Badge key={t} type={t} />
           ))}
