@@ -125,7 +125,7 @@ const Home = ({
       x: 0,
       transition: { type: "spring", stiffness: 100 },
     },
-  };
+  } as const;
 
   return (
     <PageTransition>
