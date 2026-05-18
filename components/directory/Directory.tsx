@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState, useMemo, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Search,
@@ -14,6 +16,7 @@ import {
 } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
 import { getVerifiedBusinesses, DirectoryBusiness } from "@/lib/db/businesses";
+import { getBusinessCategoryImage } from "@/lib/businessImages";
 
 const FILTERS = {
   provinces: ["Ontario", "British Columbia", "Alberta", "Nova Scotia", "Quebec", "Saskatchewan"],
@@ -184,45 +187,57 @@ export const Directory = () => {
                           scale: { duration: 0.2 },
                           delay: (index % 6) * 0.05 // Stagger only current batch
                         }}
-                        className="bg-white rounded-[2.5rem] p-10 border border-gray-100 shadow-sm hover:shadow-2xl transition-shadow group flex flex-col h-full cursor-pointer relative"
+                        className="group"
                       >
-                        <div className="flex justify-between items-start mb-10">
-                          <div className="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center text-gray-300 font-black text-xs group-hover:bg-red-50 group-hover:text-red-400 transition-colors border border-gray-50">
-                            {biz.name[0]}
-                          </div>
-                          {biz.verified && (
-                            <div className="bg-emerald-50 text-emerald-600 px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest flex items-center gap-1.5 border border-emerald-100">
-                              <CheckCircle className="w-3 h-3" /> Certified Authentic
+                        <Link
+                          href={`/search/${biz.id}`}
+                          className="bg-white rounded-[2.5rem] p-10 border border-gray-100 shadow-sm hover:shadow-2xl transition-shadow flex flex-col h-full cursor-pointer relative"
+                        >
+                          <div className="flex justify-between items-start mb-10">
+                            <div className="relative w-16 h-16 bg-slate-50 rounded-2xl overflow-hidden border border-gray-100 shadow-sm">
+                              <Image
+                                src={getBusinessCategoryImage(biz.category)}
+                                alt={`${biz.name} thumbnail`}
+                                fill
+                                sizes="64px"
+                                className="object-cover transition-transform duration-500 group-hover:scale-110"
+                              />
+                              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
                             </div>
-                          )}
-                        </div>
-
-                        <div className="mb-6">
-                          <h3 className="font-black text-2xl text-gray-900 group-hover:text-red-600 transition-colors mb-3 tracking-tight">
-                            {biz.name}
-                          </h3>
-                          <div className="flex items-center text-gray-400 font-bold text-[10px] uppercase tracking-widest">
-                            <MapPin className="w-3.5 h-3.5 mr-2 text-red-600" /> {biz.location}
+                            {biz.verified && (
+                              <div className="bg-emerald-50 text-emerald-600 px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest flex items-center gap-1.5 border border-emerald-100">
+                                <CheckCircle className="w-3 h-3" /> Certified Authentic
+                              </div>
+                            )}
                           </div>
-                        </div>
 
-                        <p className="text-gray-500 leading-relaxed font-medium mb-10 flex-grow text-sm md:text-base line-clamp-3">
-                          {biz.desc}
-                        </p>
-
-                        <div className="mt-auto pt-8 border-t border-gray-50 flex items-center justify-between">
-                          <div className="flex flex-wrap gap-2">
-                            <span className="px-3 py-1 bg-gray-50 text-gray-400 rounded-md text-[9px] font-black uppercase tracking-tighter">
-                              {biz.category}
-                            </span>
-                            {biz.type.slice(0, 1).map((t) => (
-                              <Badge key={t} type={t} />
-                            ))}
+                          <div className="mb-6">
+                            <h3 className="font-black text-2xl text-gray-900 group-hover:text-red-600 transition-colors mb-3 tracking-tight">
+                              {biz.name}
+                            </h3>
+                            <div className="flex items-center text-gray-400 font-bold text-[10px] uppercase tracking-widest">
+                              <MapPin className="w-3.5 h-3.5 mr-2 text-red-600" /> {biz.location}
+                            </div>
                           </div>
-                          <motion.div whileHover={{ x: 5 }} className="text-gray-900 font-black text-[10px] uppercase tracking-widest flex items-center">
-                            Details <ChevronRight className="w-4 h-4 ml-1 text-red-600" />
-                          </motion.div>
-                        </div>
+
+                          <p className="text-gray-500 leading-relaxed font-medium mb-10 flex-grow text-sm md:text-base line-clamp-3">
+                            {biz.desc}
+                          </p>
+
+                          <div className="mt-auto pt-8 border-t border-gray-50 flex items-center justify-between">
+                            <div className="flex flex-wrap gap-2">
+                              <span className="px-3 py-1 bg-gray-50 text-gray-400 rounded-md text-[9px] font-black uppercase tracking-tighter">
+                                {biz.category}
+                              </span>
+                              {biz.type.slice(0, 1).map((t) => (
+                                <Badge key={t} type={t} />
+                              ))}
+                            </div>
+                            <motion.div whileHover={{ x: 5 }} className="text-gray-900 font-black text-[10px] uppercase tracking-widest flex items-center">
+                              Details <ChevronRight className="w-4 h-4 ml-1 text-red-600" />
+                            </motion.div>
+                          </div>
+                        </Link>
                       </motion.div>
                     ))}
 

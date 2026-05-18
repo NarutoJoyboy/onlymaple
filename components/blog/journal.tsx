@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { RevealOnScroll } from "../../components/animations/RevealOnScroll";
 import {
@@ -130,11 +131,16 @@ export default function BlogPage() {
                     <motion.div
                       whileHover={{ scale: 1.05 }}
                       transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1] }}
-                      className="w-full h-full flex items-center justify-center"
+                      className="relative w-full h-full"
                     >
-                      <span className="font-black text-gray-900/5 text-6xl uppercase tracking-tighter rotate-12 select-none">
-                        OnlyMaple
-                      </span>
+                      <Image
+                        src={post.imageUrl}
+                        alt={post.title}
+                        fill
+                        sizes={isHero ? "(min-width: 1024px) 60vw, 100vw" : "(min-width: 768px) 33vw, 100vw"}
+                        className="object-cover"
+                      />
+                      <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
                     </motion.div>
                     <div className="absolute top-6 left-6">
                       <span className="bg-white/90 backdrop-blur-md px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest text-red-600">

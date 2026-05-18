@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { Heart, MapPin, Search, TrendingUp, ArrowRight } from 'lucide-react';
 import { RevealOnScroll } from '../animations/RevealOnScroll';
 
@@ -9,9 +10,18 @@ import { DirectoryBusiness } from '@/lib/db/businesses';
 import { getUserProfile } from '@/lib/db/users'; // We need this to get savedBusinesses array
 import { ShopperProfile } from '@/lib/types';
 
+const CATEGORY_IMAGES: Record<string, string> = {
+  "Food & Drink": "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=85",
+  Retail: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=85",
+  Services: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=85",
+  Tech: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=800&q=85",
+  Manufacturing: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=85",
+  Sports: "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=800&q=85",
+};
+
 export const ShopperDashboard = () => {
   const { user } = useAuth();
-  const [savedBusinesses, setSavedBusinesses] = useState<DirectoryBusiness[]>([]);
+  const [savedBusinesses] = useState<DirectoryBusiness[]>([]);
   const [loading, setLoading] = useState(true);
   const [userName, setUserName] = useState("User");
 
@@ -24,6 +34,7 @@ export const ShopperDashboard = () => {
           const shopperProfile = profile as ShopperProfile;
           setUserName(shopperProfile.displayName || "User");
           const savedIds = shopperProfile.additionalData?.savedBusinesses || [];
+          void savedIds;
 
           // 2. Mock some saved IDs if empty for demo? 
           // setSavedBusinesses([]); 
@@ -56,7 +67,7 @@ export const ShopperDashboard = () => {
           <div className="flex justify-between items-end mb-12">
             <div>
               <h1 className="text-3xl font-extrabold text-gray-900">Welcome back, {userName.split(' ')[0]}!</h1>
-              <p className="text-gray-500 mt-2">You've supported {savedBusinesses.length} Canadian businesses this month.</p>
+              <p className="text-gray-500 mt-2">You&apos;ve supported {savedBusinesses.length} Canadian businesses this month.</p>
             </div>
             <button className="bg-red-700 text-white px-6 py-3 rounded-xl font-bold shadow-lg hover:bg-red-800 transition-colors flex items-center">
               <Search className="w-4 h-4 mr-2" /> Find More
@@ -101,7 +112,15 @@ export const ShopperDashboard = () => {
             {savedBusinesses.length > 0 ? (
               savedBusinesses.map((biz, i) => (
                 <div key={i} className="bg-white rounded-3xl p-6 border border-gray-100 hover:shadow-md transition-shadow cursor-pointer group">
-                  <div className="h-32 bg-gray-100 rounded-2xl mb-4 flex items-center justify-center text-gray-300 font-bold">IMG</div>
+                  <div className="h-32 bg-gray-100 rounded-2xl mb-4 relative overflow-hidden">
+                    <Image
+                      src={CATEGORY_IMAGES[biz.category] ?? CATEGORY_IMAGES.Retail}
+                      alt={`${biz.name} category image`}
+                      fill
+                      sizes="(min-width: 768px) 33vw, 100vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
                   <div className="flex justify-between items-start">
                     <div>
                       <h3 className="font-bold text-gray-900 group-hover:text-red-700 transition-colors">{biz.name}</h3>

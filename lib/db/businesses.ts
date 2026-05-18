@@ -20,3 +20,7 @@ export const getVerifiedBusinesses = async (): Promise<DirectoryBusiness[]> => {
     }, 800); 
   });
 };
+
+export const getBusinessById = (id: string): DirectoryBusiness | undefined => {
+  return STORE_DATA.find((business) => String(business.id) === id);
+};

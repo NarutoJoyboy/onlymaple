@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { ArrowLeft, User, Clock, Bookmark, Twitter, Linkedin } from 'lucide-react';
@@ -98,9 +99,15 @@ export default function BlogPostPage({ post }: { post: BlogPost }) {
         </p>
 
         {/* Dynamic Image Window */}
-        <div className={`w-full aspect-video rounded-[3rem] ${post.color} mb-16 flex items-center justify-center text-gray-400 relative overflow-hidden group`}>
-          <span className="font-black opacity-10 text-6xl uppercase tracking-[0.5em] rotate-12">OnlyMaple Log</span>
-          <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+        <div className={`w-full aspect-video rounded-[3rem] ${post.color} mb-16 relative overflow-hidden group shadow-2xl shadow-gray-900/10`}>
+          <Image
+            src={post.imageUrl}
+            alt={post.title}
+            fill
+            sizes="(min-width: 768px) 768px, 100vw"
+            className="object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-black/10 opacity-60 group-hover:opacity-30 transition-opacity" />
         </div>
 
         <div className="prose prose-xl prose-slate max-w-none prose-headings:font-black prose-headings:tracking-tighter prose-p:text-gray-600 prose-p:leading-extra-relaxed prose-strong:text-gray-900">

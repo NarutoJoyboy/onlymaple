@@ -1,9 +1,12 @@
 // src/components/directory/BusinessCard.tsx
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { MapPin, ChevronRight, CheckCircle } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
+import type { DirectoryBusiness } from "@/lib/db/businesses";
+import { getBusinessCategoryImage } from "@/lib/businessImages";
 
-export const BusinessCard = ({ biz, index }: { biz: any; index: number }) => {
+export const BusinessCard = ({ biz, index }: { biz: DirectoryBusiness; index: number }) => {
   return (
     <motion.div
       layout
@@ -24,8 +27,15 @@ export const BusinessCard = ({ biz, index }: { biz: any; index: number }) => {
       </span>
 
       <div className="flex justify-between items-start mb-10 relative z-10">
-        <div className="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center text-gray-300 font-black text-xs group-hover:bg-red-50 group-hover:text-red-400 transition-colors border border-gray-50">
-          {biz.name[0]}
+        <div className="relative w-16 h-16 bg-slate-50 rounded-2xl overflow-hidden border border-gray-100 shadow-sm">
+          <Image
+            src={getBusinessCategoryImage(biz.category)}
+            alt={`${biz.name} thumbnail`}
+            fill
+            sizes="64px"
+            className="object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
         </div>
         {biz.verified && (
           <div className="bg-emerald-50 text-emerald-600 px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest flex items-center gap-1.5 border border-emerald-100">
@@ -51,7 +61,7 @@ export const BusinessCard = ({ biz, index }: { biz: any; index: number }) => {
         <div className="flex flex-wrap gap-2">
           {/* ✅ Fixed: Removed variant="outline" to match the Badge component's props */}
           <Badge type={biz.category} />
-          {biz.type.slice(0, 1).map((t: any) => (
+          {biz.type.slice(0, 1).map((t) => (
             <Badge key={t} type={t} />
           ))}
         </div>

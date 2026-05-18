@@ -104,21 +104,21 @@ export const CertificationTiers = () => {
 
   return (
     <section
-      className="bg-slate-50/80 backdrop-blur-sm py-32 border-y border-gray-200 relative z-10 overflow-hidden"
+      className="bg-slate-50/80 backdrop-blur-sm py-20 sm:py-24 md:py-32 border-y border-gray-200 relative z-10 overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <RevealOnScroll>
-          <div className="text-center max-w-3xl mx-auto mb-20">
-            <div className="inline-flex items-center px-3 py-1 rounded-full bg-red-100 text-red-800 text-xs font-bold uppercase tracking-widest mb-4">
-              <ShieldCheck className="w-4 h-4 mr-2" />
+          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 md:mb-20">
+            <div className="inline-flex items-center px-3 py-1 rounded-full bg-red-100 text-red-800 text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-4">
+              <ShieldCheck className="w-4 h-4 mr-2 flex-shrink-0" />
               Rigorous Verification
             </div>
-            <h2 className="text-4xl font-extrabold text-gray-900 tracking-tight mb-6">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight mb-4 sm:mb-6">
               Our Certification Standards
             </h2>
-            <p className="text-xl text-gray-500 leading-relaxed">
+            <p className="text-base sm:text-xl text-gray-500 leading-relaxed">
               Select a badge below to see the strict requirements every
               OnlyMaple business must meet.
             </p>
@@ -126,12 +126,12 @@ export const CertificationTiers = () => {
 
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
             {/* LEFT COLUMN: Navigation List */}
-            <div className="lg:col-span-5 flex flex-col space-y-4">
+            <div className="lg:col-span-5 flex flex-col space-y-3 sm:space-y-4">
               {TIERS.map((tier, i) => (
                 <button
                   key={i}
                   onClick={() => handleManualClick(i)}
-                  className={`group flex items-center justify-between p-5 rounded-2xl text-left transition-all duration-300 border relative overflow-hidden ${
+                  className={`group flex items-center justify-between p-4 sm:p-5 rounded-2xl text-left transition-all duration-300 border relative overflow-hidden ${
                     active === i
                       ? "bg-white border-red-200 shadow-lg scale-[1.02] ring-1 ring-red-50"
                       : "bg-transparent border-transparent hover:bg-white/60 hover:border-gray-200"
@@ -147,9 +147,9 @@ export const CertificationTiers = () => {
                     </div>
                   )}
 
-                  <div className="flex items-center gap-5 relative z-10">
+                  <div className="flex items-center gap-3 sm:gap-5 relative z-10 min-w-0">
                     <div
-                      className={`p-3.5 rounded-2xl transition-colors duration-300 shadow-sm ${
+                      className={`p-3 sm:p-3.5 rounded-2xl transition-colors duration-300 shadow-sm flex-shrink-0 ${
                         active === i
                           ? "bg-red-600 text-white"
                           : "bg-white text-gray-400 group-hover:text-red-600 border border-gray-100"
@@ -159,7 +159,7 @@ export const CertificationTiers = () => {
                     </div>
                     <div>
                       <h4
-                        className={`font-bold text-lg leading-tight mb-1 ${
+                        className={`font-bold text-base sm:text-lg leading-tight mb-1 ${
                           active === i
                             ? "text-gray-900"
                             : "text-gray-500 group-hover:text-gray-900"
@@ -179,7 +179,7 @@ export const CertificationTiers = () => {
                     </div>
                   </div>
                   <ChevronRight
-                    className={`w-5 h-5 transition-all relative z-10 ${
+                    className={`hidden sm:block w-5 h-5 transition-all relative z-10 ${
                       active === i
                         ? "text-red-600 translate-x-0 opacity-100"
                         : "text-gray-300 -translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100"
@@ -191,20 +191,20 @@ export const CertificationTiers = () => {
 
             {/* RIGHT COLUMN: Active Detail View */}
             <div className="lg:col-span-7">
-              <div className="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-2xl shadow-red-900/5 border border-gray-100 relative overflow-hidden min-h-[520px] flex flex-col justify-center group transition-all duration-500">
+              <div className="bg-white rounded-[1.75rem] sm:rounded-[2.5rem] p-6 sm:p-8 md:p-12 shadow-2xl shadow-red-900/5 border border-gray-100 relative overflow-hidden min-h-[auto] lg:min-h-[520px] flex flex-col justify-center group transition-all duration-500">
                 {/* Decorative Background Watermark */}
-                <div className="absolute -right-10 -bottom-10 text-gray-50 opacity-50 pointer-events-none transform rotate-[-15deg] scale-150 transition-transform duration-700 group-hover:scale-[1.6]">
-                  <ShieldCheck strokeWidth={0.5} className="w-96 h-96" />
+                <div className="absolute -right-16 -bottom-16 text-gray-50 opacity-50 pointer-events-none transform rotate-[-15deg] scale-125 sm:scale-150 transition-transform duration-700 group-hover:scale-[1.6]">
+                  <ShieldCheck strokeWidth={0.5} className="w-72 h-72 sm:w-96 sm:h-96" />
                 </div>
 
                 {/* Content - Animated Key for re-render */}
                 <div key={active} className="relative z-10 animate-fade-in-up">
-                  <div className="flex items-center justify-between mb-10">
+                  <div className="flex items-center justify-between mb-8 sm:mb-10">
                     <div className="flex items-center gap-4">
-                      <div className="p-4 bg-gradient-to-br from-red-600 to-red-700 text-white rounded-2xl shadow-lg shadow-red-600/20">
+                      <div className="p-3 sm:p-4 bg-gradient-to-br from-red-600 to-red-700 text-white rounded-2xl shadow-lg shadow-red-600/20">
                         {TIERS[active].icon}
                       </div>
-                      <div className="h-8 w-px bg-gray-200/80 mx-2"></div>
+                      <div className="h-8 w-px bg-gray-200/80 mx-1 sm:mx-2"></div>
                       <div className="flex flex-col">
                         <span className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-0.5">
                           Badge Type
@@ -220,14 +220,14 @@ export const CertificationTiers = () => {
                     </div>
                   </div>
 
-                  <h3 className="text-4xl font-extrabold text-gray-900 mb-6 tracking-tight">
+                  <h3 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4 sm:mb-6 tracking-tight">
                     {TIERS[active].title}
                   </h3>
-                  <p className="text-lg text-gray-500 leading-relaxed mb-10 max-w-lg">
+                  <p className="text-base sm:text-lg text-gray-500 leading-relaxed mb-8 sm:mb-10 max-w-lg">
                     {TIERS[active].desc}
                   </p>
 
-                  <div className="bg-gray-50/80 backdrop-blur-sm rounded-3xl p-8 border border-gray-100 relative overflow-hidden">
+                  <div className="bg-gray-50/80 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-gray-100 relative overflow-hidden">
                     {/* Subtle side accent */}
                     <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-red-600"></div>
 
@@ -239,7 +239,7 @@ export const CertificationTiers = () => {
                       {TIERS[active].requirements.map((req, idx) => (
                         <li
                           key={idx}
-                          className="flex items-start text-gray-700 group/item"
+                          className="flex items-start text-sm sm:text-base text-gray-700 group/item"
                         >
                           <div className="w-6 h-6 rounded-full bg-white border border-gray-200 flex items-center justify-center mr-4 mt-0.5 shadow-sm group-hover/item:border-red-200 group-hover/item:shadow-md transition-all">
                             <CheckCircle2 className="w-3.5 h-3.5 text-red-600 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300 scale-50 group-hover/item:scale-100" />
@@ -258,26 +258,26 @@ export const CertificationTiers = () => {
 
           {/* BOTTOM: Gold Member Banner */}
           <RevealOnScroll delay={200}>
-            <div className="mt-16 relative rounded-[2.5rem] bg-gradient-to-r from-amber-50 via-orange-50 to-amber-50 border border-amber-100/50 p-10 md:p-14 overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-amber-900/5 transition-all duration-500 group">
+            <div className="mt-10 sm:mt-16 relative rounded-[1.75rem] sm:rounded-[2.5rem] bg-gradient-to-r from-amber-50 via-orange-50 to-amber-50 border border-amber-100/50 p-6 sm:p-10 md:p-14 overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-amber-900/5 transition-all duration-500 group">
               <div className="absolute inset-0 bg-white/40 transform -skew-x-12 -translate-x-full group-hover:animate-shimmer z-0"></div>
 
-              <div className="relative z-10 flex flex-col md:flex-row items-center gap-8 md:gap-16">
+              <div className="relative z-10 flex flex-col md:flex-row items-center gap-6 sm:gap-8 md:gap-16">
                 <div className="flex-shrink-0 relative">
                   <div className="absolute inset-0 bg-amber-400 rounded-full blur-2xl opacity-20 animate-pulse"></div>
-                  <div className="relative p-6 bg-gradient-to-br from-amber-300 to-orange-500 rounded-full text-white shadow-2xl shadow-amber-600/30 group-hover:scale-110 transition-transform duration-500 rotate-3 ring-4 ring-white/50">
-                    <Award className="w-12 h-12" />
+                  <div className="relative p-5 sm:p-6 bg-gradient-to-br from-amber-300 to-orange-500 rounded-full text-white shadow-2xl shadow-amber-600/30 group-hover:scale-110 transition-transform duration-500 rotate-3 ring-4 ring-white/50">
+                    <Award className="w-10 h-10 sm:w-12 sm:h-12" />
                   </div>
                 </div>
                 <div className="flex-1 text-center md:text-left">
                   <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 mb-3">
-                    <h3 className="text-3xl font-extrabold text-gray-900 tracking-tight">
+                    <h3 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
                       Gold Member Status
                     </h3>
                     <span className="bg-gradient-to-r from-amber-100 to-orange-100 text-amber-900 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest border border-amber-200 shadow-sm">
                       Elite
                     </span>
                   </div>
-                  <p className="text-gray-600 leading-relaxed text-lg max-w-2xl">
+                  <p className="text-gray-600 leading-relaxed text-base sm:text-lg max-w-2xl">
                     The ultimate standard of trust. Awarded exclusively to
                     businesses that meet{" "}
                     <span className="font-bold text-gray-900 border-b-2 border-amber-200">

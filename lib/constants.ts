@@ -7,7 +7,8 @@ export const BLOG_POSTS = [
     category: "Economy",
     date: "Oct 12, 2025",
     author: "Sarah Jenkins",
-    imageColor: "bg-red-50"
+    imageColor: "bg-red-50",
+    imageUrl: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=85"
   },
   {
     id: 2,
@@ -17,7 +18,8 @@ export const BLOG_POSTS = [
     category: "Success Stories",
     date: "Oct 08, 2025",
     author: "David Ross",
-    imageColor: "bg-orange-50"
+    imageColor: "bg-orange-50",
+    imageUrl: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1200&q=85"
   },
   {
     id: 3,
@@ -27,7 +29,8 @@ export const BLOG_POSTS = [
     category: "Guide",
     date: "Sep 28, 2025",
     author: "OnlyMaple Team",
-    imageColor: "bg-blue-50"
+    imageColor: "bg-blue-50",
+    imageUrl: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=85"
   },
   {
     id: 4,
@@ -37,7 +40,8 @@ export const BLOG_POSTS = [
     category: "Consumer Tips",
     date: "Sep 15, 2025",
     author: "Sarah Jenkins",
-    imageColor: "bg-green-50"
+    imageColor: "bg-green-50",
+    imageUrl: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=1200&q=85"
   }
 ];
 
@@ -50,7 +54,8 @@ export const POSTS = [
     date: "May 12, 2026",
     author: "Sarah Jenkins",
     color: "bg-red-100",
-    readTime: "6 min"
+    readTime: "6 min",
+    imageUrl: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1400&q=85"
   },
   {
     id: 2,
@@ -60,7 +65,8 @@ export const POSTS = [
     date: "May 08, 2026",
     author: "David Ross",
     color: "bg-amber-100",
-    readTime: "4 min"
+    readTime: "4 min",
+    imageUrl: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1400&q=85"
   },
   {
     id: 3,
@@ -70,7 +76,8 @@ export const POSTS = [
     date: "Apr 28, 2026",
     author: "OnlyMaple Team",
     color: "bg-blue-100",
-    readTime: "5 min"
+    readTime: "5 min",
+    imageUrl: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1400&q=85"
   },
   {
     id: 4,
@@ -80,7 +87,8 @@ export const POSTS = [
     date: "Apr 20, 2026",
     author: "Marcus Chen",
     color: "bg-emerald-100",
-    readTime: "7 min"
+    readTime: "7 min",
+    imageUrl: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=85"
   },
   {
     id: 5,
@@ -90,7 +98,8 @@ export const POSTS = [
     date: "Apr 15, 2026",
     author: "Elena Rodriguez",
     color: "bg-green-100",
-    readTime: "8 min"
+    readTime: "8 min",
+    imageUrl: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1400&q=85"
   },
   {
     id: 6,
@@ -100,7 +109,8 @@ export const POSTS = [
     date: "Apr 10, 2026",
     author: "Jean-Pierre Blanc",
     color: "bg-orange-100",
-    readTime: "4 min"
+    readTime: "4 min",
+    imageUrl: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1400&q=85"
   },
   {
     id: 7,
@@ -110,7 +120,8 @@ export const POSTS = [
     date: "Mar 30, 2026",
     author: "Sarah Jenkins",
     color: "bg-slate-100",
-    readTime: "5 min"
+    readTime: "5 min",
+    imageUrl: "https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=1400&q=85"
   },
   {
     id: 8,
@@ -120,7 +131,8 @@ export const POSTS = [
     date: "Mar 22, 2026",
     author: "Thomas Littlechief",
     color: "bg-purple-100",
-    readTime: "9 min"
+    readTime: "9 min",
+    imageUrl: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=85"
   },
   {
     id: 9,
@@ -130,7 +142,8 @@ export const POSTS = [
     date: "Mar 15, 2026",
     author: "OnlyMaple Team",
     color: "bg-cyan-100",
-    readTime: "12 min"
+    readTime: "12 min",
+    imageUrl: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1400&q=85"
   },
   {
     id: 10,
@@ -140,7 +153,8 @@ export const POSTS = [
     date: "Mar 05, 2026",
     author: "David Ross",
     color: "bg-indigo-100",
-    readTime: "6 min"
+    readTime: "6 min",
+    imageUrl: "https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1400&q=85"
   },
   {
     id: 11,
@@ -150,7 +164,8 @@ export const POSTS = [
     date: "Feb 28, 2026",
     author: "Chloe Dubois",
     color: "bg-yellow-100",
-    readTime: "5 min"
+    readTime: "5 min",
+    imageUrl: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1400&q=85"
   },
   {
     id: 12,
@@ -160,7 +175,8 @@ export const POSTS = [
     date: "Feb 20, 2026",
     author: "Marcus Chen",
     color: "bg-rose-100",
-    readTime: "7 min"
+    readTime: "7 min",
+    imageUrl: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1400&q=85"
   },
   {
     id: 13,
@@ -170,7 +186,8 @@ export const POSTS = [
     date: "Feb 12, 2026",
     author: "Dr. Aris Thorne",
     color: "bg-sky-100",
-    readTime: "10 min"
+    readTime: "10 min",
+    imageUrl: "https://images.unsplash.com/photo-1517783999520-f068d7431a60?auto=format&fit=crop&w=1400&q=85"
   },
   {
     id: 14,
@@ -180,7 +197,8 @@ export const POSTS = [
     date: "Feb 01, 2026",
     author: "Elena Rodriguez",
     color: "bg-lime-100",
-    readTime: "6 min"
+    readTime: "6 min",
+    imageUrl: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1400&q=85"
   },
   {
     id: 15,
@@ -190,7 +208,8 @@ export const POSTS = [
     date: "Jan 25, 2026",
     author: "OnlyMaple Team",
     color: "bg-zinc-100",
-    readTime: "8 min"
+    readTime: "8 min",
+    imageUrl: "https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=1400&q=85"
   },
   {
     id: 16,
@@ -200,7 +219,8 @@ export const POSTS = [
     date: "Jan 18, 2026",
     author: "Sarah Jenkins",
     color: "bg-teal-100",
-    readTime: "7 min"
+    readTime: "7 min",
+    imageUrl: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=85"
   },
   {
     id: 17,
@@ -210,7 +230,8 @@ export const POSTS = [
     date: "Jan 10, 2026",
     author: "Chloe Dubois",
     color: "bg-stone-100",
-    readTime: "5 min"
+    readTime: "5 min",
+    imageUrl: "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=1400&q=85"
   },
   {
     id: 18,
@@ -220,7 +241,8 @@ export const POSTS = [
     date: "Jan 02, 2026",
     author: "Thomas Littlechief",
     color: "bg-violet-100",
-    readTime: "9 min"
+    readTime: "9 min",
+    imageUrl: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=1400&q=85"
   }
 ];
 

@@ -1,16 +1,14 @@
 import {
   ArrowDown,
   ArrowRight,
-  Award,
   Briefcase,
-  Heart,
   HeartHandshake,
   MapPin,
   Search,
   Star,
-  Users,
   ShoppingBag,
 } from "lucide-react";
+import type React from "react";
 import { RevealOnScroll } from "../animations/RevealOnScroll";
 import PageTransition from "../animations/PageTransition";
 import CountUp from "../animations/CountUp";
@@ -27,7 +25,15 @@ import {
   useTransform,
 } from "framer-motion";
 
-const MagneticButton = ({ children, className, onClick }: any) => {
+type BlogPreviewPost = (typeof BLOG_POSTS)[number];
+
+type MagneticButtonProps = {
+  children: React.ReactNode;
+  className?: string;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+};
+
+const MagneticButton = ({ children, className, onClick }: MagneticButtonProps) => {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
@@ -94,10 +100,10 @@ const Home = ({
   setView,
   setActivePost,
 }: {
-  setView: any;
-  setActivePost: any;
+  setView: (view: string) => void;
+  setActivePost: (post: BlogPreviewPost) => void;
 }) => {
-  const handlePostClick = (post: any) => {
+  const handlePostClick = (post: BlogPreviewPost) => {
     setActivePost(post);
     setView("blog-post");
     window.scrollTo(0, 0);
@@ -131,7 +137,7 @@ const Home = ({
     <PageTransition>
       <div className="min-h-screen relative z-10">
         {/* Hero Section */}
-        <div className="relative bg-red-700 overflow-hidden min-h-[600px] flex items-center">
+        <div className="relative bg-red-700 overflow-hidden min-h-[560px] sm:min-h-[600px] flex items-center">
           {/* Background Container */}
           <div className="absolute inset-0">
             {/* Base gradient layers */}
@@ -140,58 +146,59 @@ const Home = ({
 
             {/* Giant Background Maple Leaves */}
             <motion.div
-              className="absolute -left-20 -bottom-20 text-red-900 opacity-20 "
+              className="absolute -left-32 -bottom-24 w-[360px] sm:w-[520px] text-red-900 opacity-20"
               style={{ y: leafY, rotate: leafRotate }}
             >
               <Image priority src={MapleLeaf} alt="My SVG Icon" />
             </motion.div>
             <motion.div
               style={{ y: leafY, rotate: leafRotate }}
-              className="absolute -right-20 top-20 text-red-900 opacity-20"
+              className="absolute -right-36 top-24 w-[360px] sm:w-[520px] text-red-900 opacity-20"
             >
               <Image priority src={MapleLeaf} alt="Maple Leaf" />
             </motion.div>
 
             {/* Abstract shapes */}
-            <div className="absolute -top-24 -right-24 w-96 h-96 bg-red-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-            <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-red-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-            <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-orange-600 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-4000"></div>
+            <div className="absolute -top-24 -right-24 w-72 h-72 sm:w-96 sm:h-96 bg-red-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+            <div className="absolute -bottom-24 -left-24 w-72 h-72 sm:w-96 sm:h-96 bg-red-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+            <div className="absolute top-1/2 left-1/2 w-72 h-72 sm:w-96 sm:h-96 bg-orange-600 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-4000"></div>
           </div>
 
           {/* Content */}
-          <div className="relative max-w-7xl mx-auto px-6 py-24 text-center z-10">
-            <div className="inline-flex items-center px-4 py-2 rounded-full border border-red-400 bg-red-800/30 text-red-100 text-sm font-medium mb-8 backdrop-blur-sm animate-fade-in-up">
-              <Star className="w-4 h-4 mr-2 text-yellow-400 fill-current animate-pulse" />
-              The Gold Standard for Canadian Authenticity
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-20 sm:py-24 text-center z-10">
+            <div className="inline-flex max-w-[92vw] items-center justify-center px-3 sm:px-4 py-2 rounded-full border border-red-400 bg-red-800/30 text-red-100 text-xs sm:text-sm font-medium mb-7 sm:mb-8 backdrop-blur-sm animate-fade-in-up">
+              <Star className="w-4 h-4 mr-2 text-yellow-400 fill-current animate-pulse flex-shrink-0" />
+              <span className="leading-snug">The Gold Standard for Canadian Authenticity</span>
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-8 leading-tight animate-fade-in-up">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-6 sm:mb-8 leading-[0.95] sm:leading-tight animate-fade-in-up">
               Shop Local.{" "}
               <span className="text-red-200">Verify Authentic.</span>
               <br />
               Build Canada.
             </h1>
 
-            <p className="mt-4 max-w-2xl mx-auto text-xl md:text-2xl text-red-100 font-light leading-relaxed animate-fade-in-up">
-              Canada's official hub for certifying business ownership.
-              <span className="font-medium text-white ml-2">
+            <p className="mt-4 max-w-2xl mx-auto text-base sm:text-xl md:text-2xl text-red-100 font-light leading-relaxed animate-fade-in-up">
+              Canada&apos;s official hub for certifying business ownership.
+              <span className="block sm:inline font-medium text-white sm:ml-2 mt-2 sm:mt-0">
                 Every $100 spent here keeps $66 in our community.
               </span>
             </p>
 
-            <div className="mt-12 flex flex-col sm:flex-row justify-center gap-5 animate-fade-in-up">
+            <div className="mt-10 sm:mt-12 flex flex-col sm:flex-row justify-center gap-4 sm:gap-5 animate-fade-in-up">
               <button
-                className="px-10 py-4 border border-white/20 text-lg font-semibold rounded-full text-white bg-white/10 hover:bg-white/20 backdrop-blur-md transition-all duration-300 active:scale-95 flex items-center justify-center"
+                className="w-full sm:w-auto px-8 sm:px-10 py-4 border border-white/20 text-base sm:text-lg font-semibold rounded-full text-white bg-white/10 hover:bg-white/20 backdrop-blur-md transition-all duration-300 active:scale-95 flex items-center justify-center"
                 onClick={() => setView("search")}
               >
                 <Search className="w-5 h-5 mr-2 inline-block" />
                 Find Businesses
               </button>
               <MagneticButton
-                children="Get Certified"
                 onClick={() => setView("business")}
-                className="px-10 py-4 text-lg font-semibold rounded-full text-red-900 bg-white hover:bg-red-50 shadow-xl hover:shadow-2xl transition-all duration-300 transform active:scale-95 relative overflow-hidden"
-              />
+                className="w-full sm:w-auto px-8 sm:px-10 py-4 text-base sm:text-lg font-semibold rounded-full text-red-900 bg-white hover:bg-red-50 shadow-xl hover:shadow-2xl transition-all duration-300 transform active:scale-95 relative overflow-hidden"
+              >
+                Get Certified
+              </MagneticButton>
             </div>
 
             <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/50 animate-scroll">
@@ -201,27 +208,27 @@ const Home = ({
         </div>
 
         {/* Quick Stats Banner - Floating */}
-        <div className="max-w-6xl mx-auto px-6 -mt-16 relative z-20 animate-fade-in-up animation-delay-400">
-          <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-8 md:p-12 hover:shadow-2xl transition-shadow duration-300">
-            <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-100 gap-8 md:gap-0">
-              <div className="text-center px-4 group">
-                <div className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-700 to-red-500 mb-3 group-hover:scale-110 transition-transform duration-300">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 -mt-10 sm:-mt-16 relative z-20 animate-fade-in-up animation-delay-400">
+          <div className="bg-white rounded-2xl sm:rounded-3xl shadow-xl border border-gray-100 p-6 sm:p-8 md:p-12 hover:shadow-2xl transition-shadow duration-300">
+            <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-100 gap-6 sm:gap-8 md:gap-0">
+              <div className="text-center px-2 sm:px-4 group">
+                <div className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-700 to-red-500 mb-3 group-hover:scale-110 transition-transform duration-300">
                   <CountUp end={94} suffix="%" />
                 </div>
                 <div className="text-gray-500 font-medium tracking-wide text-sm uppercase">
                   Canadians Check Origin
                 </div>
               </div>
-              <div className="text-center px-4 group">
-                <div className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-700 to-red-500 mb-3 group-hover:scale-110 transition-transform duration-300">
+              <div className="text-center px-2 sm:px-4 pt-6 md:pt-0 group">
+                <div className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-700 to-red-500 mb-3 group-hover:scale-110 transition-transform duration-300">
                   <CountUp end={66} prefix="$" />
                 </div>
                 <div className="text-gray-500 font-medium tracking-wide text-sm uppercase">
                   Retained Locally per $100
                 </div>
               </div>
-              <div className="text-center px-4 group">
-                <div className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-700 to-red-500 mb-3 group-hover:scale-110 transition-transform duration-300">
+              <div className="text-center px-2 sm:px-4 pt-6 md:pt-0 group">
+                <div className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-700 to-red-500 mb-3 group-hover:scale-110 transition-transform duration-300">
                   <CountUp end={18} suffix="%" />
                 </div>
                 <div className="text-gray-500 font-medium tracking-wide text-sm uppercase">
@@ -233,29 +240,29 @@ const Home = ({
         </div>
 
         {/* How It Works Section */}
-        <div className="bg-white/90 py-32 relative z-10">
-          <div className="max-w-7xl mx-auto px-6">
+        <div className="bg-white/90 py-20 sm:py-24 md:py-32 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <RevealOnScroll>
-              <div className="text-center mb-24">
+              <div className="text-center mb-12 sm:mb-16 md:mb-24">
                 <h2 className="text-red-700 font-bold tracking-widest uppercase text-sm mb-4">
                   Transparent Process
                 </h2>
-                <p className="text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900">
+                <p className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900">
                   How OnlyMaple Works
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10 lg:gap-16">
                 {/* For Shoppers */}
-                <div className="bg-slate-50 p-10 md:p-12 rounded-[2.5rem] border border-gray-100 relative group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
-                  <div className="absolute top-10 right-10 w-20 h-20 bg-red-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-500 animate-float">
-                    <ShoppingBag className="w-8 h-8 text-red-600" />
+                <div className="bg-slate-50 p-6 sm:p-8 md:p-12 rounded-[1.75rem] sm:rounded-[2.5rem] border border-gray-100 relative group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                  <div className="absolute top-6 right-6 sm:top-10 sm:right-10 w-14 h-14 sm:w-20 sm:h-20 bg-red-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-500 animate-float">
+                    <ShoppingBag className="w-6 h-6 sm:w-8 sm:h-8 text-red-600" />
                   </div>
-                  <h3 className="text-3xl font-bold text-gray-900 mb-10 pr-20">
+                  <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 sm:mb-10 pr-14 sm:pr-20">
                     For Shoppers
                   </h3>
                   <motion.div
-                    className="space-y-10"
+                    className="space-y-7 sm:space-y-10"
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
@@ -278,13 +285,13 @@ const Home = ({
                       <motion.div
                         key={idx}
                         variants={itemVariants}
-                        className="flex group/item"
+                        className="flex gap-4 sm:gap-0 group/item"
                       >
-                        <span className="flex-shrink-0 w-12 h-12 rounded-2xl bg-white border border-gray-200 flex items-center justify-center text-lg font-bold text-gray-900 shadow-sm mr-6 group-hover/item:bg-red-600 group-hover/item:text-white transition-colors">
+                        <span className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-white border border-gray-200 flex items-center justify-center text-base sm:text-lg font-bold text-gray-900 shadow-sm sm:mr-6 group-hover/item:bg-red-600 group-hover/item:text-white transition-colors">
                           {idx + 1}
                         </span>
                         <div>
-                          <h4 className="text-xl font-bold text-gray-900 mb-2">
+                          <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
                             {item.title}
                           </h4>
                           <p className="text-gray-500 leading-relaxed">
@@ -305,15 +312,15 @@ const Home = ({
                 </div>
 
                 {/* For Businesses */}
-                <div className="bg-gray-900 p-10 md:p-12 rounded-[2.5rem] relative group hover:shadow-2xl transition-all duration-500 text-white hover:-translate-y-2">
-                  <div className="absolute top-10 right-10 w-20 h-20 bg-gray-800 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-500 animate-float">
-                    <Briefcase className="w-8 h-8 text-white" />
+                <div className="bg-gray-900 p-6 sm:p-8 md:p-12 rounded-[1.75rem] sm:rounded-[2.5rem] relative group hover:shadow-2xl transition-all duration-500 text-white hover:-translate-y-2">
+                  <div className="absolute top-6 right-6 sm:top-10 sm:right-10 w-14 h-14 sm:w-20 sm:h-20 bg-gray-800 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-500 animate-float">
+                    <Briefcase className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                   </div>
-                  <h3 className="text-3xl font-bold mb-10 pr-20">
+                  <h3 className="text-2xl sm:text-3xl font-bold mb-8 sm:mb-10 pr-14 sm:pr-20">
                     For Businesses
                   </h3>
                   <motion.div
-                    className="space-y-10"
+                    className="space-y-7 sm:space-y-10"
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
@@ -336,13 +343,13 @@ const Home = ({
                       <motion.div
                         key={idx}
                         variants={itemVariants}
-                        className="flex group/item"
+                        className="flex gap-4 sm:gap-0 group/item"
                       >
-                        <span className="flex-shrink-0 w-12 h-12 rounded-2xl bg-gray-800 border border-gray-700 flex items-center justify-center text-lg font-bold shadow-sm mr-6 group-hover/item:bg-white group-hover/item:text-red-900 transition-colors">
+                        <span className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-gray-800 border border-gray-700 flex items-center justify-center text-base sm:text-lg font-bold shadow-sm sm:mr-6 group-hover/item:bg-white group-hover/item:text-red-900 transition-colors">
                           {idx + 1}
                         </span>
                         <div>
-                          <h4 className="text-xl font-bold mb-2">
+                          <h4 className="text-lg sm:text-xl font-bold mb-2">
                             {item.title}
                           </h4>
                           <p className="text-gray-400 leading-relaxed">
@@ -370,10 +377,10 @@ const Home = ({
 
         {/* Latest from the Log (Blog Section) */}
 
-        <div className="py-32 bg-white relative z-10">
-          <div className="max-w-7xl mx-auto px-6">
+        <div className="py-20 sm:py-24 md:py-32 bg-white relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <RevealOnScroll>
-              <div className="flex justify-between items-end mb-16">
+              <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-6 mb-10 sm:mb-16">
                 <div className="max-w-xl">
                   <div className="flex items-center gap-3 text-red-700 font-bold mb-4">
                     <div className="h-px w-8 bg-red-700"></div>
@@ -381,7 +388,7 @@ const Home = ({
                       The Maple Leaf Log
                     </span>
                   </div>
-                  <h2 className="text-4xl font-extrabold text-gray-900 tracking-tight leading-tight">
+                  <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight leading-tight">
                     Latest Stories & Insights
                   </h2>
                 </div>
@@ -396,7 +403,7 @@ const Home = ({
                 </button>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
                 {BLOG_POSTS.slice(0, 3).map((post, idx) => (
                   <RevealOnScroll key={post.id} delay={idx * 100}>
                     <TiltCard>
@@ -405,18 +412,22 @@ const Home = ({
                         className="group cursor-pointer flex flex-col h-full transition-shadow duration-300"
                       >
                         <div
-                          className={`aspect-[4/3] rounded-3xl ${post.imageColor} mb-6 flex items-center justify-center text-gray-500 overflow-hidden shadow-sm relative`}
+                          className={`aspect-[4/3] rounded-2xl sm:rounded-3xl ${post.imageColor} mb-5 sm:mb-6 overflow-hidden shadow-sm relative`}
                         >
-                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300 z-10"></div>
-                          <span className="text-sm font-medium group-hover:scale-105 transition-transform duration-700">
-                            Article Image
-                          </span>
+                          <Image
+                            src={post.imageUrl}
+                            alt={post.title}
+                            fill
+                            sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                            className="object-cover transition-transform duration-700 group-hover:scale-105"
+                          />
+                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 z-10"></div>
                         </div>
                         <div className="flex-1">
                           <div className="text-xs font-bold text-red-600 uppercase tracking-wider mb-3">
                             {post.category}
                           </div>
-                          <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-red-700 transition-colors leading-snug">
+                          <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 group-hover:text-red-700 transition-colors leading-snug">
                             {post.title}
                           </h3>
                           <p className="text-gray-500 leading-relaxed line-clamp-2 mb-4">
@@ -446,48 +457,58 @@ const Home = ({
         </div>
 
         {/* Featured Businesses Carousel */}
-        <div className="py-32 bg-slate-50/80 backdrop-blur-sm border-t border-gray-100 relative z-10">
-          <div className="max-w-7xl mx-auto px-6">
+        <div className="py-20 sm:py-24 md:py-32 bg-slate-50/80 backdrop-blur-sm border-t border-gray-100 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <RevealOnScroll>
-              <div className="flex justify-between items-end mb-16">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-4 mb-10 sm:mb-16">
                 <div>
-                  <h2 className="text-3xl font-bold text-gray-900 mb-2">
+                  <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">
                     New Arrivals
                   </h2>
-                  <p className="text-gray-500 text-lg">
+                  <p className="text-gray-500 text-base sm:text-lg">
                     Discover who just joined the OnlyMaple network.
                   </p>
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
                 {[
                   {
                     name: "Muskoka Chair Co.",
                     loc: "Bracebridge, ON",
                     tag: "Independent Owner",
+                    imageUrl: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1000&q=85",
+                    imageAlt: "Wooden chairs in a warm Canadian cabin interior",
                   },
                   {
                     name: "Prairie Grain Bakery",
                     loc: "Saskatoon, SK",
                     tag: "Locally Owned",
+                    imageUrl: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1000&q=85",
+                    imageAlt: "Fresh artisan bread loaves on a bakery table",
                   },
                   {
                     name: "Atlantic Fisheries",
                     loc: "St. John's, NL",
                     tag: "Canadian Owned",
+                    imageUrl: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=85",
+                    imageAlt: "Atlantic coastline representing a local fisheries business",
                   },
                 ].map((biz, i) => (
                   <RevealOnScroll key={i} delay={i * 100}>
                     <TiltCard>
-                      <div className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer border border-gray-100 h-full">
-                        <div className="h-64 bg-gray-100 group-hover:bg-red-50/50 transition-colors flex items-center justify-center text-gray-400 relative overflow-hidden">
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                          <span className="text-sm font-medium relative z-10">
-                            Image Placeholder
-                          </span>
+                      <div className="group bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer border border-gray-100 h-full">
+                        <div className="h-56 sm:h-64 bg-gray-100 relative overflow-hidden">
+                          <Image
+                            src={biz.imageUrl}
+                            alt={biz.imageAlt}
+                            fill
+                            sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                            className="object-cover transition-transform duration-700 group-hover:scale-105"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/0 to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
                         </div>
-                        <div className="p-8">
+                        <div className="p-6 sm:p-8">
                           <div className="flex justify-between items-start mb-4">
                             <div>
                               <h3 className="font-bold text-xl text-gray-900 mb-1 group-hover:text-red-700 transition-colors">
@@ -512,27 +533,27 @@ const Home = ({
         </div>
 
         {/* Social Impact / Mission */}
-        <div className="bg-gray-900 text-white py-32 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-red-600 rounded-full mix-blend-multiply filter blur-[128px] opacity-10 animate-blob"></div>
-          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-600 rounded-full mix-blend-multiply filter blur-[128px] opacity-10 animate-blob animation-delay-2000"></div>
+        <div className="bg-gray-900 text-white py-20 sm:py-24 md:py-32 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-[320px] h-[320px] sm:w-[500px] sm:h-[500px] bg-red-600 rounded-full mix-blend-multiply filter blur-[128px] opacity-10 animate-blob"></div>
+          <div className="absolute bottom-0 left-0 w-[320px] h-[320px] sm:w-[500px] sm:h-[500px] bg-blue-600 rounded-full mix-blend-multiply filter blur-[128px] opacity-10 animate-blob animation-delay-2000"></div>
 
-          <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10">
             <RevealOnScroll>
               <div className="inline-flex items-center justify-center p-4 bg-white/5 rounded-full mb-8 backdrop-blur-sm">
                 <HeartHandshake className="w-12 h-12 text-red-500 animate-pulse" />
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-8 tracking-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 sm:mb-8 tracking-tight">
                 More Than Just a Directory
               </h2>
-              <p className="text-xl md:text-2xl text-gray-400 leading-relaxed mb-12 font-light">
+              <p className="text-base sm:text-xl md:text-2xl text-gray-400 leading-relaxed mb-10 sm:mb-12 font-light">
                 OnlyMaple is committed to giving back. We donate{" "}
                 <span className="text-white font-medium border-b border-red-500">
                   5-10% of our profits
                 </span>{" "}
-                to women's entrepreneurship programs and small business grants
+                to women&apos;s entrepreneurship programs and small business grants
                 across Canada.
               </p>
-              <button className="bg-white text-gray-900 px-10 py-4 rounded-full font-bold hover:bg-gray-100 transition-colors shadow-lg active:scale-95 relative overflow-hidden group">
+              <button className="w-full sm:w-auto bg-white text-gray-900 px-8 sm:px-10 py-4 rounded-full font-bold hover:bg-gray-100 transition-colors shadow-lg active:scale-95 relative overflow-hidden group">
                 <span className="relative z-10">Partner With Us</span>
                 <div className="absolute inset-0 bg-red-50 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
               </button>

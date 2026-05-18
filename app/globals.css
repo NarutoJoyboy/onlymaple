@@ -1,5 +1,35 @@
 @import "tailwindcss";
 
+@theme inline {
+  --font-sans: var(--font-manrope);
+  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-cormorant);
+}
+
+html {
+  text-rendering: geometricPrecision;
+}
+
+body {
+  font-family: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  font-feature-settings: "ss01", "cv05", "cv11";
+}
+
+h1,
+h2 {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-feature-settings: "liga", "kern";
+}
+
+h3,
+h4,
+button,
+input,
+select,
+textarea {
+  font-family: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+}
+
  @keyframes blob {
       0% { transform: translate(0px, 0px) scale(1); }
       33% { transform: translate(30px, -50px) scale(1.1); }
